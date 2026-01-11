@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Viena</title>
+
+  <meta name="description" content="radio, player, vue.js, audio, vue.app" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+  <link rel="icon" type="image/svg+xml" href="./images/fav.svg" />
+
+  <link rel="preload" href="./fonts/jost.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="./fonts/tulpen-one.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+  <!-- style CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body class="
+    flex 
+    subpixel-antialiased 
+    items-center justify-center 
+    min-h-screen 
+    pb-safe 
+    bg-[#f1f0e5]
+    ">
+
+  <!-- tailwind Loader -->
+  <div class="
+      loader 
+      fixed inset-0 
+      flex items-center justify-center 
+      bg-stone-100 
+      transition-opacity duration-300 
+      z-50
+      ">
+
+    <div class="
+        w-8 h-8 
+        border-2 border-gray-200 border-t-rose-600 
+        rounded-full 
+        animate-spin
+        ">
+    </div>
+
+  </div>
+
+  <!-- Container -->
+  <div id="app" tabindex="0" class="
+        size-full 
+        flex m-auto items-center justify-center 
+        z-10
+        ">
+
+    <!-- live bg  -->
+    <div class="
+                  hidden md:grid auto-cols-max grid-flow-col
+                  absolute   
+                  size-full    
+                  select-none 
+                  overflow-hidden
+                  ">
+
+      <img src="./images/1.webp" class="
+                      h-auto min-w-full 
+                      " />
+      <img src="./images/2.webp" class="
+                      h-auto min-w-full
+                      " />
+      <img src="./images/3.webp" class="
+                      h-auto min-w-full
+                      " />
+      <img src="./images/4.webp" class="
+                      h-auto min-w-full 
+                      " />
+      <img src="./images/5.webp" class="
+                      h-auto min-w-full 
+                      " />
+
+      <img :src="currentTrack.cover" class="
+                      h-auto min-w-full             
+                      object-cover
+                      " />
+
+      <img src="./images/buro.webp" class="
+                      h-dvh  
+                      object-cover" />
+
+      <!-- SVG -->
+      <img src="./images/viena.svg" class="
+          absolute
+          bottom-0
+          left-1/3
+          -translate-x-1/3
+          h-120
+          z-5
+          pointer-events-none
+        " />
+
+    </div>
+
+    <!-- Player -->
+    <div class="
+      relative 
+      z-50
+      w-dvw h-dvh 
+      md:w-95 md:h-195  
+      bg-[#eff5f5]       
+      flex flex-col
+      overflow-hidden 
+      md:rounded-4xl 
+      md:shadow-[0_0_22px] shadow-stone-400/44 -shadow-spread-2 
+      transition-all duration-300
+      ">
+
+      <!-- Top -->
+      <div class="
+      w-full 
+      h-12 
+      px-8 
+      flex items-center justify-between 
+      rounded-t-4xl
+      ">
+
+        <a href="https://github.com/yojeero/" target="_blank">
+
+          <svg class="
+                    w-4.5 h-4.5 
+                    fill-current text-[#90c8ce] hover:text-indigo-400 
+                    transition
+                    ">
+            <use xlink:href="./images/icon.svg#github"></use>
+          </svg>
+
+        </a>
+
+        <div class="flex items-center justify-center">
+
+          <span v-if="isPlaying" class="
+                    w-1.5 h-1.5 
+                    bg-red-500 
+                    rounded-full 
+                    mr-2 
+                    animate-live-record
+                    ">
+          </span>
+
+          <div class="
+                    text-center text-xs uppercase 
+                    transition-colors duration-300
+                    " :class="{
+                        'text-gray-700 ': !isPlaying, 
+                        'text-gray-500 tracking-widest': isPlaying}">
+
+            viena
+          </div>
+
+        </div>
+
+        <a :href="currentTrack.url" target="_blank">
+
+          <svg class="
+                  w-4.5 h-4.5 
+                  fill-current text-[#90c8ce] hover:text-indigo-400 
+                  transition
+                  ">
+            <use xlink:href="./images/icon.svg#radio"></use>
+          </svg>
+
+        </a>
+
+      </div>
+
+      <!-- Main -->
+      <div class="
+        flex-1 flex flex-col items-center justify-center 
+        rounded-b-4xl border-b-4 border-b-[#90c8ce]
+        bg-[#f1f0e5] pb-6       
+        ">
+
+        <!-- Clock -->
+        <div class="
+                w-full 
+                text-center tracking-[3px] font-[Tulpen_One] uppercase 
+                select-none
+                ">
+          <div class="
+                  text-4xl text-gray-800
+                  ">
+            {{ clockTime }}
+          </div>
+
+          <div class="
+                  text-xl text-gray-700
+                  ">{{ clockDay }}
+          </div>
+
+        </div>
+
+        <!-- Cover -->
+        <div class="
+                relative   
+                w-[64%] h-50 
+                my-12
+                border border-amber-50/70 
+                rounded-2xl 
+                overflow-hidden
+                select-none
+                ">
+
+          <transition name="cover-appear">
+
+            <div :key="currentTrackIndex" class="
+                  cover-inner 
+                  absolute inset-0
+                  ">
+
+              <img :src=" currentTrack.cover" class="
+                      cover
+                      w-full h-full
+                      object-cover
+                      object-top
+                      rounded-2xl
+                      " />
+            </div>
+
+          </transition>
+
+        </div>
+
+        <!-- Info / Progress -->
+        <div class="
+              w-full
+              flex flex-col
+              select-none
+              ">
+          <div class="
+              text-center text-md uppercase text-gray-800
+              ">
+            {{ currentTrack.name }}
+          </div>
+
+          <canvas ref="canvasRef" class="
+              mx-auto
+              w-[80%]
+              h-10
+              my-4
+              select-none
+              ">
+          </canvas>
+
+        </div>
+
+        <!-- Controls -->
+        <div class="
+                flex items-center justify-center 
+                w-full 
+                mt-6 mb-6
+                ">
+
+          <!-- Prev -->
+          <button @click="prevTrack" class="
+                  w-12 h-12 
+                  flex items-center justify-center
+                  rounded-full 
+                  hover:bg-amber-50            
+                  transition-all duration-300               
+                  cursor-pointer
+                  ">
+            <svg class="
+                    w-12 h-12 
+                    text-[#90c8ce]/60
+                    hover:text-indigo-300                             
+                    fill-current            
+                    ">
+              <use xlink:href="./images/icon.svg#icon-prev"></use>
+            </svg>
+          </button>
+
+          <!-- Play / Stop -->
+          <button @click="togglePlay" class="
+                      mx-5 
+                      w-18 h-18  
+                      rounded-full 
+                      cursor-pointer 
+                      flex items-center justify-center 
+                      transition-all duration-300 
+                      backdrop-blur-md bg-indigo-300/80 hover:bg-rose-500/80 focus:bg-indigo-400/80 focus:shadow-indigo-400/50 
+                      shadow-lg shadow-indigo-300/40 hover:shadow-rose-500/50 active:scale-95
+                      " :class="{ 'scale-105 pulse-music': isPlaying }">
+
+            <svg class="
+                      w-18 h-18 
+                      text-stone-100 
+                      fill-current                       
+                      ">
+              <use xlink:href="./images/icon.svg#p-stop" v-if="isPlaying"></use>
+              <use xlink:href="./images/icon.svg#p-play" v-else></use>
+            </svg>
+
+          </button>
+
+          <!-- Next -->
+          <button @click="nextTrack" class="
+                  w-12 h-12
+                  flex items-center justify-center
+                  rounded-full 
+                  hover:bg-amber-50
+                  transition-all duration-300               
+                  cursor-pointer
+                    ">
+            <svg class="
+                      w-12 h-12 
+                      text-[#90c8ce]/60  hover:text-indigo-300                         
+                      fill-current  
+                      ">
+              <use xlink:href="./images/icon.svg#icon-next"></use>
+            </svg>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Bottom-->
+      <div class="
+              absolute bottom-0 left-0 
+              w-full 
+              h-12 
+              rounded-b-4xl             
+              bg-[#90c8ce] backdrop-blur-md   
+              flex items-center justify-center             
+              select-none 
+              transition-transform duration-300 ease-in-out
+              " :style="{ transform: isPlaying ? 'translateY(0)' : 'translateY(100%)' }">
+
+        <div v-if="isPlaying" class="           
+                    text-md text-slate-50 text-shadow-white capitalize tracking-[2px]      
+                    ">
+          {{ currentTrack.artist }}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Vue 3 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.5.26/dist/vue.global.prod.min.js"></script>
+
+  <!-- App -->
+  <script src="js/vue.player.js"></script>
+
+  <!-- loader hide -->
+  <script>
+    window.addEventListener("load", () => {
+      const loader = document.querySelector(".loader");
+      if (!loader) return;
+      loader.classList.add("opacity-0");
+      setTimeout(() => loader.remove(), 200);
+    });
+  </script>
+
+</body>
+
+</html>
