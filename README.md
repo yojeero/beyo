@@ -1,6 +1,6 @@
 <img src="preview/git.webp">
 
-### [Viena Player](https://viena.vercel.app/) is a Vue radio player.   
+### [Viena](https://viena.vercel.app/) is a Vue radio player.   
   
 Instant one-click 5 radio playback   
 Responsive & retina-ready   
