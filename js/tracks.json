@@ -1,0 +1,37 @@
+[
+    {
+        "name": "antenne bayern",
+        "artist": "Chillout Antenne",
+        "cover": "../images/cd.svg",   
+        "src": "https://stream.antenne.de/chillout/stream/aacp",
+        "url": "https://www.antenne.de/webradio/"
+    },
+    {
+        "name": "antenne bayern",
+        "artist": "80er Hits",
+        "cover": "../images/cd.svg",  
+        "src": "https://stream.antenne.de/80er-kulthits/stream/aacp",
+        "url": "https://www.antenne.de/webradio/"
+    },
+    {
+        "name": "antenne bayern",
+        "artist": "Relax",
+        "cover": "../images/cd.svg",  
+        "src": "https://stream.antenne.de/relax/stream/aacp",
+        "url": "https://www.antenne.de/webradio/"
+    },
+    {
+        "name": "antenne bayern",
+        "artist": "Pop XXL",
+        "cover": "../images/cd.svg",  
+        "src": "https://stream.antenne.de/pop-xxl/stream/aacp",
+        "url": "https://www.antenne.de/webradio/"
+    },
+    {
+        "name": "antenne bayern",
+        "artist": "Fresh",
+        "cover": "../images/cd.svg",  
+        "src": "https://stream.antenne.de/fresh/stream/aacp",
+        "url": "https://www.antenne.de/webradio/"
+    }
+]

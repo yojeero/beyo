@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Viena</title>
+
+  <meta name="description" content="radio, player, vue.js, audio, vue.app" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+  <link rel="icon" type="image/svg+xml" href="./images/fav.svg" />
+
+  <link rel="preload" href="./fonts/poppins.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="./fonts/mabgate.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+  <!-- style CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+  
+</head>
+
+<body class="body-bg">
+
+   <div class="loader"><span id="digits"></span></div>
+
+    <div class="pic-bg">
+      <img src="./images/color.svg" alt="" class="viena-color" />
+      <img src="./images/cool.svg" alt="" class="viena-pic" /> 
+    </div>
+
+  <div id="app" class="app">
+
+    <div class="player-wrapper">     
+
+    <span class="right-buttons top-[15%] h-10 ml-0.5"></span>
+    <span class="right-buttons top-[30%] h-24 ml-0.5"></span>
+
+    <div class="player"> 
+
+      <div class="grille">
+          <div class="dots mx-0.5"></div>
+          <div class="dots mx-0.5"></div>
+          <div class="dots mx-0.5"></div>
+          <div class="dots mx-0.5"></div>
+          <div class="dots mx-0.5"></div>  
+      </div>
+
+        <div class="player-top px-8">    
+
+        <a href="https://github.com/yojeero/" target="_blank">
+
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
+          </svg>
+
+        </a>
+
+        <a :href="currentTrack.url" target="_blank">
+
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9" />
+            <path d="M7.8 4.7a6.14 6.14 0 0 0-.8 7.5" />
+            <circle cx="12" cy="9" r="2" />
+            <path d="M16.2 4.8c2 2 2.26 5.11.8 7.47" />
+            <path d="M19.1 1.9a9.96 9.96 0 0 1 0 14.1" />
+            <path d="M9.5 18h5" />
+            <path d="m8 22 4-11 4 11" />
+          </svg>
+
+        </a>
+
+      </div>
+
+    <div class="player-body pb-6">
+
+    <div class="clock-wrap">
+      <div class="clock-time" id="clockTime"></div>
+      <div class="clock-day" id="clockDay"></div>
+    </div>
+
+    <div class="cover-wrap flip-next my-12" id="coverWrap">
+       <div class="cover-inner">
+            <!-- SVG CD -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2122 2122" class="cover-image">
+              <path
+                d="M1060.663 1908.797c142.802 0 277.368-35.294 395.427-97.631 195.11-102.995 345.188-279.87 413.012-493.363 25.797-81.095 39.693-167.501 39.693-257.142 0-468.419-379.714-848.137-848.132-848.137-136.3 0-265.073 32.137-379.177 89.277C490.834 397.24 341.18 562.406 265.912 763.855c-34.521 92.37-53.387 192.386-53.387 296.806.001 468.423 379.714 848.136 848.138 848.136z"
+                fill="#444183" />
+              <path
+                d="M786.211 506.875l.008.016c83.063-41.347 176.694-64.639 275.779-64.639 342.271 0 619.737 277.472 619.737 619.743 0 63.412-9.545 124.591-27.24 182.202l.02.008 166.21 58.209c24.255-76.238 37.318-157.476 37.318-241.753 0-440.391-356.995-797.381-797.38-797.381-128.148 0-249.206 30.211-356.488 83.933l82.023 159.639.013.023zM1060.663 1858.041c134.255 0 260.767-33.176 371.763-91.784l-80.396-156.439-.01-.018-.011-.021c-86.536 45.911-185.225 71.954-290.011 71.954-342.277 0-619.743-277.466-619.743-619.738 0-77.885 14.409-152.394 40.638-221.063l-.034-.012-.01-.004-169.377-59.299c-32.457 86.844-50.195 180.874-50.195 279.043 0 440.391 356.996 797.381 797.386 797.381z"
+                fill="#2bb7be" />
+              <circle transform="rotate(-17.873 1060.797 1060.772)" cx="1060.661" cy="1060.661" fill="#444183" r="108.187" />
+              <path d="M946.014 817.881c34.772-16.45 73.625-25.685 114.646-25.685 148.268 0 268.465 120.195 268.465 268.465 0 23.016-2.907 45.351-8.355 66.67l.019.006 333.705 116.86c17.695-57.611 27.24-118.79 27.24-182.202 0-342.271-277.466-619.743-619.737-619.743-99.085 0-192.715 23.292-275.779 64.639l159.788 310.976.008.014zM1190.58 1295.6c-38.503 21.338-82.781 33.526-129.919 33.526-148.27 0-268.465-120.197-268.465-268.465 0-36.908 7.457-72.072 20.932-104.08L482.893 840.933c-26.229 68.668-40.638 143.178-40.638 221.063 0 342.271 277.466 619.738 619.743 619.738 104.786 0 203.475-26.044 290.011-71.954l-161.416-314.153-.013-.027z" fill="#ffd548"/><path d="M786.198 506.851l-82.023-159.639c-179.243 89.725-319.937 245.009-390.703 434.405l169.377 59.299c55.667-145.746 164.77-265.084 303.349-334.065z" fill="#86cfe7"/><path d="M946.014 817.881l-.007-.013-159.788-310.976-.008-.016-.013-.024c-138.579 68.98-247.682 188.318-303.349 334.065l.01.004.034.012 330.235 115.649c25.68-61.002 73.261-110.495 132.886-138.701z" fill="#fffbd6"/><path d="M1654.516 1244.205c-48.571 158.159-158.725 289.342-302.486 365.613l80.396 156.439c183.436-96.839 324.533-263.122 388.299-463.843l-166.209-58.209z" fill="#86cfe7"/><path d="M1654.516 1244.205l-.021-.008-333.705-116.86-.019-.006c-18.49 72.352-66.387 132.91-130.191 168.27l.013.025 161.416 314.153.011.021.01.018c143.761-76.271 253.914-207.454 302.486-365.613z" fill="#fffbd6"/><path d="M1060.661 792.196c-41.022 0-79.874 9.235-114.646 25.685-59.626 28.206-107.206 77.699-132.886 138.7-13.475 32.008-20.932 67.172-20.932 104.08 0 148.268 120.195 268.465 268.465 268.465 47.139 0 91.416-12.188 129.919-33.526 63.804-35.36 111.701-95.917 130.191-168.27 5.448-21.318 8.355-43.654 8.355-66.67-.001-148.269-120.198-268.464-268.466-268.464z" fill="#e72f75"/><circle transform="rotate(-17.873 1060.797 1060.772)" cx="1060.661" cy="1060.661" fill="#444183" r="108.187"/><path d="M1181.07 754.664c128.813 36.936 218.268 152.148 221.856 286.258.858 32.044 50.753 32.171 49.89 0-4.182-156.316-108.107-291.247-258.482-334.367-30.921-8.865-44.121 39.259-13.264 48.109z" fill="#fff"/><path d="M1181.713 602.981c218.124 34.197 375.624 225.907 364.691 446.967-1.588 32.092 48.307 32.01 49.89 0 11.922-241.081-162.477-457.629-401.32-495.076-31.409-4.924-44.939 43.142-13.261 48.109zM990.167 1395.226c-139.476-22.646-246.1-127.932-270.226-267.205-5.469-31.576-53.557-18.19-48.107 13.262 26.76 154.489 150.263 276.916 305.071 302.053 31.408 5.098 44.923-42.967 13.262-48.11z" fill="#fff"/><path d="M973.791 1544.599c-208.692-40.945-366.396-208.384-396.248-418.774-4.49-31.659-52.57-18.19-48.107 13.264 32.059 225.948 207.379 409.726 431.093 453.617 31.363 6.154 44.79-41.921 13.262-48.107z" fill="#fff"/>
+            </svg>
+          </div>
+    </div>
+
+    <div class="info-progress">
+      <div class="track-name" id="trackName"></div>
+      <canvas id="visualizer" class="progress-canvas my-4"></canvas>
+    </div>
+
+    <div class="controls-wrap mt-6 mb-6">
+
+      <button id="prevBtn" class="np-button">
+        <svg class="np-svg" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.3" d="m13 16-6-6 6-6"/></svg>    
+      </button>
+
+      <button class="player-btn mx-6" id="playBtn">
+
+        <svg id="playIcon" class="play-svg" viewBox="0 0 256 256">
+          <path fill="currentColor"
+            d="M231.36 116.19L87.28 28.06a14 14 0 0 0-14.18-.27A13.69 13.69 0 0 0 66 39.87v176.26a13.69 13.69 0 0 0 7.1 12.08a14 14 0 0 0 14.18-.27l144.08-88.13a13.82 13.82 0 0 0 0-23.62m-6.26 13.38L81 217.7a2 2 0 0 1-2.06 0a1.78 1.78 0 0 1-1-1.61V39.87a1.78 1.78 0 0 1 1-1.61A2.06 2.06 0 0 1 80 38a2 2 0 0 1 1 .31l144.1 88.12a1.82 1.82 0 0 1 0 3.14" />
+        </svg>
+
+        <svg id="stopIcon" class="play-svg hidden" viewBox="0 0 256 256">
+          <path fill="currentColor"
+            d="M200 42H56a14 14 0 0 0-14 14v144a14 14 0 0 0 14 14h144a14 14 0 0 0 14-14V56a14 14 0 0 0-14-14m2 158a2 2 0 0 1-2 2H56a2 2 0 0 1-2-2V56a2 2 0 0 1 2-2h144a2 2 0 0 1 2 2Z" />
+        </svg>
+
+      </button>
+
+      <button id="nextBtn" class="np-button">
+        <svg class="np-svg" viewBox="0 0 20 20">
+          <path fill="none" stroke="currentColor" stroke-width="1.3" d="m7 4 6 6-6 6" />
+        </svg>
+      </button>
+
+    </div>
+
+    </div>
+
+    <div class="bottom-panel" id="bottomPanel">
+      <div class="artist-name" id="artistName"></div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- JS -->
+
+  <!-- loader hide -->
+ <script>
+    window.addEventListener("load", () => {
+      const loader = document.querySelector(".loader");
+      if (!loader) return;
+      loader.classList.add("opacity-0");
+      setTimeout(() => loader.remove(), 200);
+    });
+  </script>
+
+    <!-- App -->
+<script src="js/radio.player.js"></script>
+
+  </body>
+</html>
