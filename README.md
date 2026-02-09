@@ -1,6 +1,6 @@
 <img src="preview/view.jpg" width="830">   
 
-### [YOPY PLAYER](https://yopy.vercel.app/) is a lightweight web radio player.     
+### [Alpen Player](https://alpen.vercel.app/) is a lightweight radio player.     
   
 - Instant one-click radio  
 - Responsive    
@@ -14,12 +14,9 @@
 
 <img alt="" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" height="20"/><img alt="" src="https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D" height="20"/><img alt="" src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white" height="20"/><img alt="" src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" height="20"/><img alt="" src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" height="20"/><img alt="" src="https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white" height="20"/>
 
-#### 🎧 YOPY Player   
+#### 🎧 Alpen Player    
 
-YOPY Player is a lightweight, modern web audio player with a smooth animated waveform visualizer.
-Designed for elegance, performance, and low-end device compatibility, it delivers a premium listening experience without unnecessary overhead.   
-
-Built with pure JavaScript, Web Audio API, and Canvas, YOPY focuses on fluid UI transitions, responsive controls, and intelligent performance scaling.       
+Built with pure JavaScript, Web Audio API, and Canvas, focuses on fluid UI transitions, responsive controls, and intelligent performance scaling.       
 
 #### 🎵 Audio Player   
 ```
@@ -34,7 +31,7 @@ Space — Play / Pause
 - Smooth cover art fade transitions   
 - Centralized player state via data-player-state   
 
-#### 🌊 Waveform Visualizer (YOPY Wave)   
+#### 🌊 Waveform Visualizer (Alpen Wave)   
 
 - Real-time audio-reactive waveform   
 - Soft “breathing” idle animation when audio is paused   

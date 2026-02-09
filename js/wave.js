@@ -1,4 +1,4 @@
-// == YOPY WAVE v7.8 — Breathing Idle (Lightweight Android) =====================
+// == Alpen WAVE v7.8 — Breathing Idle (Lightweight Android) =====================
 window.WaveformVisualizer = (() => {
   const BAR_COUNT = 48;
   const HEIGHT_SCALE = 0.45;

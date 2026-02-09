@@ -3,20 +3,19 @@
 <html lang="en">
 
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alpen</title>
+  <meta name="description" content="Lightweight web radio player with audio visualizer">
 
-  <title>Yopy</title>
+  <link rel="icon" type="image/svg+xml" href="./images/fav.svg">
 
-  <meta name="description" content="radio, player, audio, web, vanilla" />
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <link rel="preload" href="./images/line.svg" as="image">
+  <link rel="preload" href="./images/cup.png" as="image">
 
-  <link rel="icon" type="image/svg+xml" href="./images/fav.svg" />  
-
-  <!-- style CSS -->
   <link rel="stylesheet" href="./css/style.css">
-  
+
 </head>
 
 <body class="loading">
@@ -25,12 +24,14 @@
 
     <div class="pic-bg">
       <img src="./images/line.svg" alt="paint-svg" class="paint" /> 
-      <img src="./images/cup.png" alt="cup-svg" class="cup" />   
+      <img src="./images/cup.png" alt="cup-svg" class="cup" fetchpriority="high" />   
     </div>
 
-    <div class="player gap-6"> 
+    <!-- player -->
+    <div class="player"> 
 
-        <div class="top-panel px-4 md:px-10 mb-4">    
+      <!-- top panel -->
+        <div class="top-panel">      
 
         <a href="https://github.com/yojeero/" target="_blank">
 
@@ -61,30 +62,34 @@
 
        <div class="red-dot"></div>  
 
-      </div>
+      </div><!-- end top-panel -->
 
-    <div class="player-body">
+      <!-- content -->
+   <div class="content">
 
-    <div class="clock-wrap gap-1">    
+    <div class="clock-wrap">
       <div class="clock-time" id="clockTime"></div>
       <div class="clock-day" id="clockDay"></div>
     </div>
     
-      <div class="cover-wrap mt-10 mb-12">
+      <div class="cover-wrap">
         <div class="cover-inner" id="coverInner">  
             <img src="./images/w1.png" class="cover-image" id="coverImage" alt="cover" />    
         </div>
       </div>
     
-      <div class="info-wrap gap-1">
+      <div class="info-wrap">
         <div class="artist-name" id="artistName"></div>
         <div class="track-name" id="trackName"></div>
       </div> 
 
-    <div class="canvas-panel mb-2 mt-8">
+    <div class="canvas-panel">
      <canvas id="visualizer" class="canvas"></canvas>
     </div>
 
+    </div><!-- end content -->
+
+    <!-- player buttons -->
     <div class="controls-wrap">
 
       <button id="prevBtn" class="np-button">
@@ -116,10 +121,9 @@
         </svg>
       </button>
 
-    </div>
+    </div><!-- end cotrols -->
 
-    </div>
-  </div>
+  </div><!-- end player -->
 
 <!-- JS -->
 

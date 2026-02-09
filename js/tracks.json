@@ -1,8 +1,19 @@
 [
     {
         "name": "antenne bayern",
-        "artist": "Pop XXL",
+        "artist": "Lounge",
         "cover": "./images/w1.png",
+        "src": "https://stream.antenne.de/lounge/stream/aacp",
+        "color": [
+            200,
+            214,
+            220
+        ]
+    },
+    {
+        "name": "antenne bayern",
+        "artist": "Pop XXL",
+        "cover": "./images/w2.png",
         "src": "https://stream.antenne.de/pop-xxl/stream/aacp",
         "color": [
             200,
@@ -13,19 +24,8 @@
     {
         "name": "antenne bayern",
         "artist": "80er Hits",
-        "cover": "./images/w2.png",
-        "src": "https://stream.antenne.de/80er-kulthits/stream/aacp",
-        "color": [
-            200,
-            214,
-            220
-        ]
-    },
-    {
-        "name": "antenne bayern",
-        "artist": "Lounge",
         "cover": "./images/w3.png",
-        "src": "https://stream.antenne.de/lounge/stream/aacp",
+        "src": "https://stream.antenne.de/80er-kulthits/stream/aacp",
         "color": [
             200,
             214,
