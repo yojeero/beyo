@@ -1,4 +1,4 @@
-// == Alpen WAVE v7.8 — Breathing Idle (Lightweight Android) =====================
+// == Beyo wave v7.8 — Lightweight Android =====================
 window.WaveformVisualizer = (() => {
   const BAR_COUNT = 48;
   const HEIGHT_SCALE = 0.45;
