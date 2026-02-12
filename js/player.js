@@ -25,9 +25,12 @@
   let visualizerEnabled = false;
 
   /* -------------------- PLAYER STATE -------------------- */
-  function setPlayerState(state) {
-    document.documentElement.dataset.playerState = state;
-  }
+const playerEl = document.querySelector(".player");
+
+function setPlayerState(state) {
+  playerEl.dataset.playerState = state;
+}
+
   setPlayerState("paused"); 
 
   /* -------------------- DEVICE CHECK -------------------- */
