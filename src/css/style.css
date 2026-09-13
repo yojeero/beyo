@@ -1,0 +1,554 @@
+/* prettier-ignore-file */
+@import "tailwindcss";
+
+@layer base {
+
+body {
+  @apply 
+    relative 
+
+    min-h-screen
+
+    flex 
+    items-center 
+    justify-center  
+
+    bg-[#ecebe7]
+  ;
+
+  font-family: "Bitcount Single", system-ui, sans-serif;
+}
+
+button {
+  @apply 
+    focus-visible:outline-none focus-visible:ring-2
+  ;
+}
+
+}
+
+@layer components {
+
+body.loading {
+  @apply 
+    fixed inset-0    
+    
+    overflow-hidden
+  ;
+}
+
+.loader {
+  @apply 
+    flex items-center justify-center 
+
+    bg-gray-100 
+
+    transition-opacity duration-300 ease-out
+
+    z-50
+  ;
+}
+
+.loader.opacity-0 {
+  @apply 
+    pointer-events-none
+  ;
+}
+
+.line {
+  @apply 
+    fixed top-0 left-0 
+
+    w-full h-0.5 
+
+    bg-white 
+
+    rounded-xs 
+
+    blur-[0.3px]
+
+    overflow-hidden   
+
+    after:fixed after:w-0 after:h-full after:top-0 after:left-0 after:bg-indigo-200
+  ;
+}
+
+.line:after {
+  @apply 
+    fixed
+  ;
+
+  content: "";
+  animation: prog 2.8s ease-in-out infinite;
+}
+
+  @keyframes 
+  prog { 0% { left: -40%; width: 40%; } 
+  50% { left: 30%; width: 60%; } 
+  100% { left: 100%; width: 40%; } }
+
+.pic-bg {
+  @apply 
+    absolute hidden 
+    
+    size-full
+
+    md:flex  
+
+    overflow-hidden
+
+    z-0
+  ;
+}
+
+.paint-top {
+  @apply 
+    absolute top-0 left-[20%]
+
+    h-[40%]
+
+    object-cover
+  ;
+}
+
+.paint-bottom {
+  @apply 
+    absolute bottom-0 right-[10%]  
+
+    h-[40%]
+
+    object-cover
+  ;
+}
+
+.player {
+  @apply 
+    relative
+
+    grid grid-rows-[auto_1fr_auto]
+
+    w-dvw h-dvh
+    md:w-95 md:h-195 md:rounded-[56px] 
+
+    bg-linear-to-br from-white/92 to-white/82 
+
+    md:ring-1 md:ring-black/4
+
+    overflow-visible
+
+    transition-transform transition-opacity duration-300
+
+    z-10
+    
+    pt-8 pb-14 gap-y-6
+  ;
+}
+
+.player::before {
+  @apply 
+    absolute 
+
+    w-full h-full
+
+    md:rounded-[56px] 
+    md:border-6 md:border-white/80 md:border-b-stone-300   
+    md:outline-1 md:outline-stone-400/50
+
+    bg-linear-to-tl from-stone-200/90 to-[#ecebe7]
+    md:shadow-[7px_7px_16px_0_rgba(107,106,99,0.4),_5px_5px_28px_-12px_rgba(254,254,249,0.8)]
+
+    opacity-80    
+    
+    z-[-1]
+  ;
+
+  content: "";
+}
+
+.top-panel {
+  @apply w-full 
+
+  flex items-center justify-between
+
+  rounded-t-4xl
+
+  px-8;
+}
+
+.grille {
+  @apply 
+    w-auto h-auto
+
+    flex items-center justify-center
+  ;
+}
+
+.camera {
+  @apply 
+    w-2 h-2
+
+    rounded-full
+
+    bg-gray-700
+  ;
+}
+
+.red-dot {
+  @apply 
+    w-1.5 h-1.5
+
+    rounded-full
+
+    bg-blue-500
+  ;
+
+  transition: background-color 0.25s ease;
+}
+
+[data-player-state="playing"] .red-dot {
+  @apply 
+    bg-rose-500
+  ;
+
+  animation: dot-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+
+.dots {
+  @apply 
+    w-0.5 h-0.5
+
+    rounded-full
+
+    bg-gray-900
+  ;
+}
+
+.social-icon {
+  @apply 
+    w-5 h-5
+
+    text-indigo-300
+
+    cursor-pointer
+  ;
+}
+
+.social-icon:hover { transform: scale(1.2); }
+
+.content {
+  @apply 
+    w-full h-full 
+
+    flex flex-col justify-evenly items-center
+
+    overflow-y-auto    
+    
+    gap-6
+  ;
+}
+
+.clock-wrap {
+  @apply 
+    w-full
+    
+    flex flex-col items-center justify-center 
+
+    text-center uppercase
+
+    select-none     
+    
+    gap-1 mt-2
+  ;
+}
+
+.clock-time {
+  @apply 
+    text-4xl text-gray-800
+  ;
+}
+
+.clock-day {
+  @apply 
+    text-base text-gray-700 tracking-widest
+  ;
+}
+
+.cover-wrap {
+  @apply 
+    relative isolate
+
+    w-48 h-48     
+    md:w-56 md:h-56
+
+    flex items-center justify-center
+
+    rounded-full 
+
+    bg-gray-200
+
+    select-none
+
+    my-12 md:my-0
+  ;
+}
+
+.cover-wrap::before,
+.cover-wrap::after,
+.cover-inner {
+  @apply 
+    absolute top-1/2 left-1/2 -translate-1/2 
+
+    rounded-full
+  ;
+}
+
+.cover-wrap::before {
+  @apply 
+    w-[120%] h-30
+
+    bg-white/40
+
+    z-[-2]
+  ;
+
+  content: "";
+}
+
+.cover-wrap::after {
+  @apply 
+    w-[112%] h-50
+
+    bg-gray-200
+
+    z-[-1]
+  ;
+
+  content: "";
+}
+
+.cover-inner {
+  @apply 
+    w-full aspect-square
+
+    ring-6 ring-gray-100/70
+
+    overflow-hidden
+
+    opacity-100
+  ;
+
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+}
+
+.cover-inner.fade-out {
+  @apply 
+    opacity-0
+  ;
+
+  transform: scale(0.9);
+}
+
+.cover-inner.fade-in {
+  @apply 
+    opacity-100
+  ;
+
+  transform: scale(1);
+}
+
+.cover-image {
+  @apply 
+    w-full h-full
+
+    rounded-full
+
+    object-top object-cover
+  ;
+}
+
+.info-wrap {
+  @apply 
+    flex flex-col items-center justify-center
+
+    text-center capitalize
+
+    select-none
+
+    gap-1
+  ;
+}
+
+.artist-name {
+  @apply 
+    text-2xl text-gray-900
+  ;
+}
+
+.track-name {
+  @apply 
+    text-xl text-gray-800  
+  ;
+}
+
+.canvas-panel {
+  @apply 
+    w-full h-8 
+
+    flex items-center justify-center 
+
+    select-none overflow-hidden
+
+    mt-4
+  ;
+}
+
+.canvas {
+  @apply 
+    w-full h-full 
+
+    block
+
+    select-none
+
+    opacity-90
+  ;
+}
+
+.controls-wrap {
+  @apply 
+    w-full 
+
+    flex items-center justify-center 
+    
+    gap-x-3 md:gap-x-1
+  ;
+}
+
+.player-btn,
+.np-button {
+  @apply 
+    relative 
+
+    flex items-center justify-center
+
+    rounded-full
+  ;
+}
+
+.player-btn {
+  @apply 
+    w-18 h-18
+
+    bg-lime-600/80
+
+    cursor-pointer
+
+    overflow-visible
+  ;
+}
+
+.player-btn:hover {
+  @apply 
+    bg-yellow-500
+  ;
+}
+
+.play-svg {
+  @apply 
+    absolute
+
+    w-10 h-10
+
+    text-gray-100
+  ;
+
+  transition:
+    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.play-icon {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pause-icon {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+[data-player-state="playing"] .play-icon {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+[data-player-state="playing"] .pause-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.player-btn::after {
+  opacity: 0;
+}
+
+[data-player-state="playing"] .player-btn::after {
+  opacity: 0.85;
+  animation: spin-ring 4s linear infinite;
+}
+
+@keyframes spin-ring {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.np-button {
+  @apply 
+    w-14 h-14
+
+    bg-transparent
+
+    transition-opacity duration-300
+  ;
+}
+
+.np-button:hover {
+  @apply 
+    bg-gray-50
+  ;
+
+  transform: translateY(-1px);
+}
+
+.np-button:active {
+  transform: translateY(1px) scale(0.96);
+}
+
+.np-svg {
+  @apply 
+    w-8 h-8 
+
+    text-gray-600
+  ;
+
+  transform: scale(1);
+}
+
+.np-button:hover .np-svg {
+  @apply 
+    text-gray-700
+    
+    cursor-pointer
+  ;
+
+  transform: scale(1.1);
+}
+
+}

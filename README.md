@@ -1,4 +1,4 @@
-<img src="preview/preview.jpg" width="830">   
+<img src="preview/beyo.jpg" width="100%" max-width="800px">   
 
 ### [Beyo Player](https://Beyo.vercel.app/) is a lightweight radio player.     
   
