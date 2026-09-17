@@ -1,66 +1,30 @@
-<img src="preview/beyo.jpg" width="100%" max-width="800px">   
+<img src="preview/beyo.jpg" width="100%">   
 
-### [Beyo](https://Beyo.vercel.app/) is a lightweight radio player.     
-  
-- Instant one-click radio  
-- Responsive    
-- Tailwind v4   
-- Vanilla JS  
-- Live audio visualizer   
-- Full keyboard control   
-- Easy station switching   
+<img src="https://img.shields.io/badge/Beyo-7678ed?style=for-the-badge" width="40%" alt="Beyo">   
+
+> Beyo - Just fork the project and customize it.  
+
 - Built-in live clock   
-- Fast and lightweight    
+- Fast and lightweight   
+- Full keyboard control   
+- Live streaming 4 radio    
+- Real-time audio waveform   
+- Cloud & Static Hosting Ready     
+- Responsive mobile-friendly design   
+- Lightweight – no frameworks required   
 
-#### 🎧 Beyo Player    
-
-Built with pure JavaScript, Web Audio API, and Canvas, focuses on fluid UI transitions, responsive controls, and intelligent performance scaling.       
-
-#### 🎵 Audio Player   
-```
-Play / Pause, Next, Previous controls   
-Keyboard shortcuts   
-Space — Play / Pause   
-← / → — Track navigation   
-```
-
-- Automatic next track on end   
-- Track metadata support (title, artist, cover, accent color)   
-- Smooth cover art fade transitions   
-- Centralized player state via data-player-state   
-
-#### 🌊 Waveform Visualizer (Beyo Wave)   
-
-- Real-time audio-reactive waveform   
-- Soft “breathing” idle animation when audio is paused   
-- Bass-responsive kick amplification   
-- Rounded bars with symmetrical center shaping   
-- Smooth color interpolation between tracks   
-- Canvas-based rendering (no external libraries)   
-
-#### 📱 Performance & Device Awareness   
-
-- Automatic detection of ultra-low-end devices   
-- Visualizer disabled on weak hardware to save battery & CPU   
-- Reduced redraw frequency for idle mode   
-- Optimized FFT size and smoothing for mobile browsers   
-
-#### 🧠 Smart Behavior   
-
-- Visualizer pauses when the tab is hidden   
-- Resumes automatically when playback continues   
-- AudioContext resumes safely after browser suspension   
-- Adaptive visual behavior depending on playback state
-
-#### 🧩 Modular Architecture   
+#### Multi-station radio player with Modular Architecture.   
 
 - player.js — Audio logic, controls, UI state   
 - wave.js — Independent visualizer engine   
-- tracks.json — customize radio stations / covers / wave colours    
-- Easily extensible and framework-agnostic   
-- Clean separation of concerns   
+- tracks.json — customize radio stations / covers / wave colours   
 
-##### Tech Stack   
+#### Keyboard shortcuts   
+  
+> Space — Play / Pause   
+> ← / → — Track navigation   
+
+#### Tech Stack   
 ```
-Bun | Vite | Vercel | Tailwind | Vanilla JS   
+Bun | Vite | Tailwind CSS | Vanilla JS   
 ```
