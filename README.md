@@ -1,4 +1,4 @@
-<img src="preview/beyo.jpg" width="100%">   
+<img src="preview/beyo.webp" width="100%">   
 
 <img src="https://img.shields.io/badge/Beyo-7678ed?style=for-the-badge" width="40%" alt="Beyo">   
 
@@ -29,12 +29,12 @@
 
 #### Tech Stack   
 ```
-Bun | Vite | Tailwind CSS | Vanilla JS   
+Bun | Vite | Biome | Tailwind CSS | Vanilla JS   
 ```   
 
 ## Commands
 
-All commands are run from the root of the project:
+All commands are run from the root of the project:   
 
 | Command           | Action                                          |
 | :---------------- | :---------------------------------------------- |
@@ -42,3 +42,5 @@ All commands are run from the root of the project:
 | `bun run dev`     | Starts local dev server at `localhost:4321`     |
 | `bun run build`   | Builds the production site to `./dist/`         |
 | `bun run preview` | Previews the build locally                      |
+| `bun run check`   | Lints + formats (Biome, applies safe fixes)     |
+| `bun run ci`      | Non-mutating Biome check for CI                 |   
