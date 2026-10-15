@@ -95,15 +95,15 @@
   }
 
   .clock-time {
-    @apply text-4xl text-gray-800;
+    @apply text-gray-800 text-5xl md:text-4xl;
   }
 
   .clock-day {
-    @apply text-base text-gray-700 tracking-widest;
+    @apply text-xl md:text-base text-gray-700 tracking-widest;
   }
 
   .cover-wrap {
-    @apply relative isolate w-48 h-48 md:w-56 md:h-56 flex items-center justify-center rounded-full bg-gray-200 select-none my-12 md:my-0;
+    @apply relative isolate w-3/5 flex items-center justify-center rounded-full bg-gray-200 select-none aspect-square;
   }
 
   .cover-wrap::before,
@@ -153,11 +153,11 @@
   }
 
   .artist-name {
-    @apply text-2xl text-gray-900;
+    @apply text-3xl md:text-2xl text-gray-900;
   }
 
   .track-name {
-    @apply text-xl text-gray-800;
+    @apply text-2xl md:text-xl text-gray-800;
   }
 
   .canvas-panel {
@@ -169,7 +169,7 @@
   }
 
   .controls-wrap {
-    @apply w-full flex items-center justify-center gap-x-3 md:gap-x-1;
+    @apply w-full flex items-center justify-center gap-x-3 md:gap-x-1 my-4 md:my-1;
   }
 
   .player-btn,
@@ -178,15 +178,25 @@
   }
 
   .player-btn {
-    @apply w-18 h-18 bg-lime-600/80 cursor-pointer overflow-visible;
+    @apply w-24 md:w-18 aspect-square cursor-pointer bg-lime-600 text-white shadow-xl shadow-lime-700/30 ring-8 ring-stone-300/50 transition-[background-color,box-shadow,transform] duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime-700;
   }
 
   .player-btn:hover {
-    @apply bg-yellow-500;
+    @apply bg-lime-500 ring-12 ring-stone-200/40 border-2 border-lime-100/30;
+  }
+
+  .player-btn:active {
+    @apply bg-lime-700;
+
+    transform: scale(0.95);
+  }
+
+  [data-player-state="playing"] .player-btn {
+    @apply ring-12 ring-stone-100/20;
   }
 
   .play-svg {
-    @apply absolute w-10 h-10 text-gray-100;
+    @apply absolute w-14 md:w-10 aspect-square text-white;
 
     transition:
       opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -214,21 +224,6 @@
   [data-player-state="playing"] .pause-icon {
     opacity: 1;
     transform: scale(1);
-  }
-
-  .player-btn::after {
-    opacity: 0;
-  }
-
-  [data-player-state="playing"] .player-btn::after {
-    opacity: 0.85;
-    animation: spin-ring 4s linear infinite;
-  }
-
-  @keyframes spin-ring {
-    to {
-      transform: rotate(360deg);
-    }
   }
 
   .np-button {

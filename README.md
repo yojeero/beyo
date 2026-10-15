@@ -1,9 +1,8 @@
-<img src="preview/beyo.webp" width="100%">   
+<img src="preview/d1.webp" width="100%">   
 
-<img src="https://img.shields.io/badge/Beyo-7678ed?style=for-the-badge" width="40%" alt="Beyo">   
+<img src="https://img.shields.io/badge/Qoovi-7678ed?style=for-the-badge" width="40%" alt="qoovi">   
 
-> [!NOTE]
-> Features 🧼      
+Features 🧼      
 
 - Built-in live clock   
 - Fast and lightweight   
